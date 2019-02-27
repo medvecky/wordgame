@@ -281,8 +281,6 @@ def playHand(hand, wordList, n):
     print("Run out of letters. Total score:  {}  points.".format(totalScore))
 
 
-
-
 #
 # Problem #5: Playing a game
 # 
@@ -299,8 +297,24 @@ def playGame(wordList):
  
     2) When done playing the hand, repeat from step 1    
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.")  # <-- Remove this line when you code the function
+    hand = {}
+    while True:
+        choice = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if choice not in "nre":
+            print("Invalid command.")
+            continue
+        if choice == "e":
+            break
+        elif choice == "n":
+            hand = dealHand(HAND_SIZE)
+            playHand(hand, wordList, HAND_SIZE)
+        elif choice == "r":
+            if len(hand) < 1:
+                print("You have not played a hand yet. Please play a new hand first!")
+                print()
+                continue
+            else:
+                playHand(hand, wordList, HAND_SIZE)
 
 
 #
